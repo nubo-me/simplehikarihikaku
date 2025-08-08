@@ -1,6 +1,14 @@
 # シンプル光回線比較
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/nubo-me/simplehikarihikaku)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Firebase](https://img.shields.io/badge/Hosted%20on-Firebase-orange?logo=firebase)](https://hikari-simple-comparison.firebaseapp.com)
+
 光回線プロバイダーを料金・速度・提供エリアで徹底比較できるWebサイトです。
+
+## 🌐 ライブデモ
+
+**🔗 [サイトを見る](https://hikari-simple-comparison.firebaseapp.com)**
 
 ## 🚀 特徴
 
