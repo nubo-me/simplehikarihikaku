@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hikari-simple-comparison.firebaseapp.com/sitemap.xml
+
+# クロール速度の制限
+Crawl-delay: 1
+
+# Google特有の設定
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
