@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './App'
 import './index.css'
-import { initPerformanceOptimizations } from './utils/performance.ts'
+import { initPerformanceOptimizations } from './utils/performance'
 
 // パフォーマンス最適化の初期化
 initPerformanceOptimizations();
