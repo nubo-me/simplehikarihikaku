@@ -1,11 +1,12 @@
 // Service Worker for performance optimization
-const CACHE_NAME = 'hikari-comparison-v2';
+const CACHE_NAME = 'hikari-comparison-v3';
+// GitHub Pages 配下(/simplehikarihikaku/)でも解決できるよう、先頭スラッシュなしの相対パスで指定
 const STATIC_CACHE_URLS = [
-  '/',
-  '/site.webmanifest',
-  '/favicon.svg',
-  '/robots.txt',
-  '/sitemap.xml'
+  './',
+  'site.webmanifest',
+  'favicon.svg',
+  'robots.txt',
+  'sitemap.xml'
 ];
 
 // キャッシュ戦略: Stale While Revalidate
@@ -55,11 +56,12 @@ self.addEventListener('fetch', (event) => {
         try {
           const networkResponse = await fetch(request);
           const cache = await caches.open(CACHE_NAME);
-          cache.put('/', networkResponse.clone());
+          // リクエストそのものをキーにキャッシュ
+          cache.put(request, networkResponse.clone());
           return networkResponse;
         } catch (err) {
           const cache = await caches.open(CACHE_NAME);
-          const cached = await cache.match('/') || await caches.match('/');
+          const cached = await cache.match(request);
           return cached || new Response('Offline', { status: 503 });
         }
       })()
