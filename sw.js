@@ -1,5 +1,5 @@
 // Service Worker for performance optimization
-const CACHE_NAME = 'hikari-comparison-v3';
+const CACHE_NAME = 'hikari-comparison-v4';
 // GitHub Pages 配下(/simplehikarihikaku/)でも解決できるよう、先頭スラッシュなしの相対パスで指定
 const STATIC_CACHE_URLS = [
   './',
@@ -19,11 +19,25 @@ const RUNTIME_CACHE_URLS = [
 
 // インストール時のキャッシュ
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(STATIC_CACHE_URLS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await Promise.all(
+      STATIC_CACHE_URLS.map(async (url) => {
+        try {
+          const req = new Request(url, { cache: 'reload' });
+          const res = await fetch(req);
+          if (res.ok) {
+            await cache.put(req, res.clone());
+          } else {
+            console.warn('[SW] skip caching (non-OK):', url, res.status);
+          }
+        } catch (e) {
+          console.warn('[SW] skip caching (error):', url, e);
+        }
+      })
+    );
+    await self.skipWaiting();
+  })());
 });
 
 // アクティベーション時の古いキャッシュ削除
