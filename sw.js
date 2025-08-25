@@ -1,8 +1,8 @@
 // Service Worker for performance optimization
-const CACHE_NAME = 'hikari-comparison-v1';
+const CACHE_NAME = 'hikari-comparison-v2';
 const STATIC_CACHE_URLS = [
   '/',
-  '/manifest.json',
+  '/site.webmanifest',
   '/favicon.svg',
   '/robots.txt',
   '/sitemap.xml'
@@ -45,33 +45,48 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // 静的ファイルのキャッシュファースト戦略
-  if (STATIC_CACHE_URLS.some(pattern => url.pathname.includes(pattern))) {
+  // HTMLナビゲーションは network-first（古い index.html に固定されるのを防ぐ）
+  const isNavigationRequest = request.mode === 'navigate' || (
+    request.headers.get('accept')?.includes('text/html')
+  );
+  if (isNavigationRequest) {
     event.respondWith(
-      caches.match(request).then((response) => {
-        return response || fetch(request);
-      })
+      (async () => {
+        try {
+          const networkResponse = await fetch(request);
+          const cache = await caches.open(CACHE_NAME);
+          cache.put('/', networkResponse.clone());
+          return networkResponse;
+        } catch (err) {
+          const cache = await caches.open(CACHE_NAME);
+          const cached = await cache.match('/') || await caches.match('/');
+          return cached || new Response('Offline', { status: 503 });
+        }
+      })()
     );
     return;
   }
 
-  // ランタイムキャッシュのStale While Revalidate戦略
+  // 静的ファイルのキャッシュファースト戦略
+  if (STATIC_CACHE_URLS.some(pattern => url.pathname.includes(pattern))) {
+    event.respondWith(
+      caches.match(request).then((response) => response || fetch(request))
+    );
+    return;
+  }
+
+  // ランタイムキャッシュの Stale-While-Revalidate（JS/CSS/外部リソース等）
   if (RUNTIME_CACHE_URLS.some(pattern => url.href.includes(pattern))) {
     event.respondWith(
-      caches.open(CACHE_NAME).then((cache) => {
-        return cache.match(request).then((response) => {
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(request).then((response) => {
           const fetchPromise = fetch(request).then((networkResponse) => {
-            // 成功したレスポンスのみキャッシュ
-            if (networkResponse.ok) {
-              cache.put(request, networkResponse.clone());
-            }
+            if (networkResponse.ok) cache.put(request, networkResponse.clone());
             return networkResponse;
           });
-
-          // キャッシュがあればそれを返し、バックグラウンドで更新
           return response || fetchPromise;
-        });
-      })
+        })
+      )
     );
   }
 });
