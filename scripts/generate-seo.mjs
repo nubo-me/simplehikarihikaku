@@ -3,7 +3,7 @@ import path from 'path';
 
 // サイトマップを生成
 const generateSitemap = () => {
-  const baseUrl = 'https://hikari-simple-comparison.firebaseapp.com';
+  const baseUrl = 'https://simple-hikari.web.app/';
   const currentDate = new Date().toISOString().split('T')[0];
   
   const urls = [
@@ -43,7 +43,7 @@ const generateRobots = () => {
   const robots = `User-agent: *
 Allow: /
 
-Sitemap: https://hikari-simple-comparison.firebaseapp.com/sitemap.xml
+Sitemap: https://simple-hikari.web.app/sitemap.xml
 
 # クロール速度の制限
 Crawl-delay: 1

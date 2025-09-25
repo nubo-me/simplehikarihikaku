@@ -6,14 +6,16 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Note: Firebase API keys for web apps are safe to expose publicly
+// Security is enforced through Firebase Security Rules, not API key secrecy
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyBtmqnsaE7sq8ASF_oqKUUH7R-GPgbKEj0",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "simple-hikari.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "simple-hikari",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "simple-hikari.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "1078800826414",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:1078800826414:web:c3132ea24d0680241e1fbf",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-7JCRXMN535"
 };
 
 // Initialize Firebase

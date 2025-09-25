@@ -2,7 +2,7 @@
   "name": "シンプル光回線比較",
   "short_name": "光回線比較",
   "description": "光回線プロバイダーを料金・速度・提供エリアで徹底比較",
-  "start_url": "/",
+  "start_url": "/simplehikarihikaku/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",

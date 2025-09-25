@@ -9,11 +9,11 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({
-  title = 'シンプル光回線比較 | 最安値のインターネット回線を比較',
-  description = '9社の光回線プロバイダーを料金・還元額・特徴で徹底比較！あなたにぴったりの光回線が見つかるシンプル比較サイト',
-  keywords = '光回線,比較,プロバイダー,料金,安い,還元,キャッシュバック,インターネット回線,シンプル',
-  ogImage = '/og-image.jpg',
-  canonicalUrl = window.location.href
+  title = '【2025年最新】光回線比較ランキング | 最安値プロバイダー9社を徹底比較',
+  description = '光回線9社の料金・速度・キャンペーンを比較！ドコモ光、auひかり、ソフトバンク光など人気プロバイダーの最新情報。月額料金3,740円〜、最大13万円キャッシュバック情報も。',
+  keywords = '光回線比較,光回線ランキング,最安値,プロバイダー,料金比較,ドコモ光,auひかり,ソフトバンク光,NURO光,キャッシュバック,2025年最新',
+  ogImage = '/og-image.svg',
+  canonicalUrl = 'https://simple-hikari.web.app/'
 }: SEOHeadProps) => {
   
   useEffect(() => {
@@ -82,7 +82,7 @@ export const SEOHead = ({
         },
         "potentialAction": {
           "@type": "SearchAction",
-          "target": `${window.location.origin}/?q={search_term_string}`,
+          "target": `https://simple-hikari.web.app/?q={search_term_string}`,
           "query-input": "required name=search_term_string"
         }
       };

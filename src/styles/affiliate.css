@@ -1,0 +1,43 @@
+/* 主要見出しやテーブルがガタつかない最低限の調整 */
+:root { 
+  --ring: #111; 
+  --muted: #6b7280; 
+}
+
+table th, table td { 
+  font-size: 14px; 
+}
+
+@media (max-width: 768px) {
+  th, td { 
+    white-space: nowrap; 
+  }
+  
+  /* モバイルでの浮遊CTAがPRバッジと重ならないよう調整 */
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* ラジオボタンとラベルの間隔調整 */
+input[type="radio"] {
+  margin-right: 4px;
+}
+
+/* タグのスタイル統一 */
+.feature-tag {
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-right: 6px;
+  white-space: nowrap;
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+/* ボタンのホバー効果 */
+button:hover, a[style*="border"]:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}

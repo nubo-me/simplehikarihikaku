@@ -49,6 +49,90 @@ Firebase Hosting用の設定ファイルが含まれています。
 
 ### 初回デプロイの手順
 
+1. Firebase CLI のインストール:
+```bash
+npm install -g firebase-tools
+```
+
+2. Firebase へログイン:
+```bash
+firebase login
+```
+
+3. デプロイ実行:
+```bash
+npm run deploy
+```
+
+## 🔧 アフィリエイト機能の設定と動作確認
+
+### GA4イベント確認方法
+
+1. **開発者ツールでの確認**:
+   - ブラウザの開発者ツール（F12）を開く
+   - Console タブで `gtag` イベントの送信を確認
+   - アフィリエイトリンクをクリックすると `click_affiliate` イベントが発火
+
+2. **GA4リアルタイムレポートでの確認**:
+   - GA4の管理画面 > レポート > リアルタイム
+   - イベント名「click_affiliate」が表示されることを確認
+   - カスタムディメンション: `brand`, `location`, `device`, `page_path`
+
+3. **デバッグモードでの確認**:
+   ```js
+   // ブラウザコンソールで実行してテスト
+   gtag('event', 'click_affiliate', {
+     brand: 'test-brand',
+     location: 'test-location',
+     device: 'desktop',
+     page_path: '/'
+   });
+   ```
+
+### JSON-LD構造化データの検証
+
+1. **Google構造化データテストツール**:
+   - [Rich Results Test](https://search.google.com/test/rich-results) にサイトURLを入力
+   - パンくずナビとFAQの構造化データが正しく認識されることを確認
+
+2. **ブラウザでの確認**:
+   - ページのソースを表示（Ctrl+U）
+   - `<script type="application/ld+json">` セクションを確認
+   - JSON形式が正しいことを確認
+
+### 機能の動作テスト
+
+1. **プロバイダーカード**:
+   - 各プロバイダーの「詳細を見る」ボタンが正しく動作することを確認
+   - アフィリエイトリンクが正しく遷移することを確認
+
+2. **モバイル用浮遊CTA**:
+   - 画面幅768px以下で表示されることを確認
+   - ボタンクリックでプロバイダーセクションにスムーズスクロールすることを確認
+
+### トラッキング設定のテスト
+
+各アフィリエイトリンクに正しい属性が設定されていることを確認:
+
+```html
+<!-- 正しい例 -->
+<a href="[アフィリエイトURL]" 
+   target="_blank" 
+   rel="nofollow sponsored" 
+   data-offer="[プロバイダーID]" 
+   data-location="[配置場所]">
+```
+
+### パフォーマンス確認
+
+1. **Core Web Vitals**:
+   - [PageSpeed Insights](https://pagespeed.web.dev/) でサイトを測定
+   - LCP、FID、CLSの値を確認
+
+2. **モバイル表示**:
+   - レスポンシブデザインの動作確認
+   - タッチ操作の最適化確認
+
 1. Firebase にログイン
 ```bash
 npm run firebase:login

@@ -3,15 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://nubo-me.github.io/simplehikarihikaku/",
   "scripts": {
     "dev": "vite",
-    "build": "npm run seo:generate && tsc -b && vite build",
+    "build": "vite build && node scripts/post-build-firebase.js",
+    "build:github": "cross-env GITHUB_PAGES=true npm run build:clean && node scripts/post-build-github.js",
+    "build:clean": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "npm run build && firebase deploy",
-    "firebase:login": "firebase login",
-    "firebase:init": "firebase init",
-    "seo:generate": "node scripts/generate-seo.mjs"
+    "deploy:github": "npm run build:github && gh-pages -d dist"
   },
   "dependencies": {
     "firebase": "^11.10.0",
@@ -26,10 +27,12 @@
     "@types/react-dom": "^19.1.6",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.6.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9.30.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "firebase-tools": "^14.10.1",
+    "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "terser": "^5.43.1",
     "typescript": "~5.8.3",

@@ -9,6 +9,14 @@ import { analytics } from './firebase/config';
 import { logEvent } from 'firebase/analytics';
 import './App.css';
 
+// 残す新しいコンポーネントのインポート
+import PRBadge from './components/PRBadge';
+import FloatingCTA from './components/FloatingCTA';
+import SchemaJsonLd from './components/SchemaJsonLd';
+import { wireAffiliateLinks } from './lib/tracking';
+// Tailwind無いのでCSSを読み込む
+import './styles/affiliate.css';
+
 function App() {
   const [sortType, setSortType] = useState<'default' | 'price' | 'cashback'>('default');
   const [sortedProviders, setSortedProviders] = useState(providers);
@@ -76,33 +84,18 @@ function App() {
       }
     };
 
-    // Core Web Vitals測定
-    const measurePerformance = () => {
-      if ('PerformanceObserver' in window) {
-        // LCP測定
-        new PerformanceObserver((entryList) => {
-          const entries = entryList.getEntries();
-          const lastEntry = entries[entries.length - 1];
-          console.log('LCP:', lastEntry.startTime);
-        }).observe({ entryTypes: ['largest-contentful-paint'] });
-
-        // FID測定
-        new PerformanceObserver((entryList) => {
-          entryList.getEntries().forEach((entry: any) => {
-            if (entry.processingStart && entry.startTime) {
-              console.log('FID:', entry.processingStart - entry.startTime);
-            }
-          });
-        }).observe({ entryTypes: ['first-input'] });
-      }
-    };
-
     setupImageOptimization();
-    measurePerformance();
+    // パフォーマンス計測はperformance.tsで実行されるため、ここでは削除
+
+    // アフィリエイトリンクの計測設定
+    wireAffiliateLinks(document);
   }, []); // 空の依存配列で1回のみ実行
 
   return (
-    <div className="app">
+    <div className="App">
+      <SchemaJsonLd />
+      <PRBadge />
+      {/* SEOヘッド */}
       <SEOHead />
       
       {/* ヘッダー */}
@@ -157,8 +150,8 @@ function App() {
           <section className="providers-section" aria-labelledby="providers-heading">
             <div className="section-header">
               <h2 id="providers-heading">
-                おすすめ光回線プロバイダー
-                <span className="provider-count">（{providers.length}件）</span>
+                【2025年最新】おすすめ光回線プロバイダーランキング
+                <span className="provider-count">（{providers.length}社比較）</span>
               </h2>
               
               {/* ソートボタン */}
@@ -207,6 +200,45 @@ function App() {
             </div>
           </section>
 
+          {/* 光回線の選び方セクション */}
+          <section className="guide-section" aria-labelledby="guide-heading">
+            <div className="section-content">
+              <h2 id="guide-heading">光回線の選び方ガイド</h2>
+              <div className="guide-grid">
+                <div className="guide-item">
+                  <h3>マンション・アパートにおすすめ</h3>
+                  <p>月額料金3,740円〜で利用可能。auひかりやNURO光が人気です。</p>
+                </div>
+                <div className="guide-item">
+                  <h3>戸建て住宅におすすめ</h3>
+                  <p>高速通信重視なら独自回線のauひかりやNURO光がおすすめ。</p>
+                </div>
+                <div className="guide-item">
+                  <h3>スマホセット割でお得</h3>
+                  <p>ドコモ・au・ソフトバンクユーザーはセット割を活用しましょう。</p>
+                </div>
+                <div className="guide-item">
+                  <h3>キャッシュバック重視</h3>
+                  <p>最大13万円のキャッシュバックキャンペーンを実施中。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 料金比較セクション */}
+          <section className="price-comparison-section" aria-labelledby="price-heading">
+            <div className="section-content">
+              <h2 id="price-heading">光回線料金比較表</h2>
+              <p className="section-description">
+                人気光回線プロバイダーの月額料金を比較。マンション・戸建てタイプ別の実質料金をご確認ください。
+              </p>
+              <div className="comparison-note">
+                <h3>実質月額料金とは？</h3>
+                <p>基本料金からキャッシュバック・割引・工事費を考慮した実際の負担額です。</p>
+              </div>
+            </div>
+          </section>
+
           {/* FAQ セクション */}
           <FAQ />
         </div>
@@ -222,6 +254,9 @@ function App() {
           </p>
         </div>
       </footer>
+      
+      {/* モバイル用浮遊CTA */}
+      <FloatingCTA />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hikari-simple-comparison.firebaseapp.com/sitemap.xml
+Sitemap: https://simple-hikari.web.app/sitemap.xml
 
 # クロール速度の制限
 Crawl-delay: 1

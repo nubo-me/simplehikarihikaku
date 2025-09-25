@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './App'
 import './index.css'
-import { initPerformanceOptimizations } from './utils/performance.ts'
+import { initPerformanceOptimizations } from './utils/performance'
 
 // パフォーマンス最適化の初期化
 initPerformanceOptimizations();
@@ -10,7 +10,8 @@ initPerformanceOptimizations();
 // Service Worker登録（本番環境のみ）
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+  const swUrl = `${import.meta.env.BASE_URL}sw.js`;
+  navigator.serviceWorker.register(swUrl)
       .then((registration) => {
         console.log('SW registered: ', registration);
       })
