@@ -17,7 +17,6 @@ export const providers: Provider[] = [
       '工事費無料キャンペーン',
       '24時間サポート'
     ],
-    affiliateUrl: 'https://example.com/docomo-affiliate',
     rating: 4.3,
     description: 'NTTドコモが提供する光回線サービス。ドコモユーザーならスマホとのセット割でお得に利用可能。',
     effectiveMonthly: '4,730円（ドコモスマホセット割適用時）',
@@ -39,7 +38,6 @@ export const providers: Provider[] = [
       '工事費実質無料',
       'Wi-Fiルーター無料'
     ],
-    affiliateUrl: 'https://example.com/au-affiliate',
     rating: 4.6,
     description: 'KDDI独自の光回線で安定した高速通信を提供。auユーザーには特にお得な割引プランあり。',
     effectiveMonthly: '4,180円（ずっとギガ得プラン・キャンペーン適用時）',
@@ -61,7 +59,6 @@ export const providers: Provider[] = [
       '他社違約金満額還元',
       'おうち割光セット'
     ],
-    affiliateUrl: 'https://example.com/softbank-affiliate',
     rating: 4.1,
     description: 'SoftBankが提供する光回線サービス。SoftBankユーザーには「おうち割」でお得。',
     effectiveMonthly: '4,180円（おうち割光セット適用時）',
@@ -83,7 +80,6 @@ export const providers: Provider[] = [
       '無線LANルーター6ヶ月無料',
       'セキュリティセット・プレミアム'
     ],
-    affiliateUrl: 'https://example.com/biglobe-affiliate',
     rating: 4.2,
     description: 'KDDIグループのビッグローブが提供する光回線。au・UQモバイルユーザーには割引あり。',
     effectiveMonthly: '2,970円（12ヶ月割引・キャッシュバック適用時）',
@@ -105,7 +101,6 @@ export const providers: Provider[] = [
       '高速・安定通信',
       '地域密着サポート'
     ],
-    affiliateUrl: 'https://example.com/commufa-affiliate',
     rating: 4.3,
     description: '中部地方限定の光回線サービス。独自回線による安定した高速通信とau・UQモバイル割引が魅力。',
     effectiveMonthly: '3,980円（中部エリア限定キャンペーン適用時）',
@@ -127,7 +122,6 @@ export const providers: Provider[] = [
       'dポイント還元',
       'IPv6対応'
     ],
-    affiliateUrl: 'https://example.com/ahamo-affiliate',
     rating: 4.1,
     description: 'NTTドコモのahamoユーザー向け光回線サービス。シンプルな料金設定とdポイント還元が魅力。',
     effectiveMonthly: '3,630円（ahamoセット割適用時）',
@@ -149,7 +143,6 @@ export const providers: Provider[] = [
       'IPv6対応',
       '無線LANルーター最大25ヶ月無料'
     ],
-    affiliateUrl: 'https://example.com/nifty-affiliate',
     rating: 4.1,
     description: 'ニフティが提供する光回線サービス。老舗プロバイダーの信頼性とau・UQモバイル割引が特徴。',
     effectiveMonthly: '3,608円（キャッシュバック適用時）',
@@ -171,7 +164,6 @@ export const providers: Provider[] = [
       '全国幅広いエリア対応',
       '豊富なオプションサービス'
     ],
-    affiliateUrl: 'https://example.com/flets-affiliate',
     rating: 4.0,
     description: 'NTT東日本・西日本が提供する光回線の基幹サービス。プロバイダーを自由に選択できる柔軟性が特徴。',
     effectiveMonthly: '5,280円（プロバイダー料込みの目安）',
@@ -193,7 +185,6 @@ export const providers: Provider[] = [
       '24時間365日サポート',
       'フレッツ光回線使用'
     ],
-    affiliateUrl: 'https://example.com/bizmo-affiliate',
     rating: 4.2,
     description: '法人・SOHO向けに特化した光回線サービス。固定IPアドレスの提供と充実したサポート体制が特徴。',
     effectiveMonthly: '4,620円（固定IP1個付きプラン）',
