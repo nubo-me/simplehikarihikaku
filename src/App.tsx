@@ -21,6 +21,45 @@ function App() {
   const [sortType, setSortType] = useState<'default' | 'price' | 'cashback'>('default');
   const [sortedProviders, setSortedProviders] = useState(providers);
 
+  const personaRecommendations = [
+    {
+      id: 'gamer',
+      title: 'オンラインゲームを快適にプレイしたい方向け',
+      description:
+        'ショップでゲーマーのお客さまから相談を受けるときは、まず回線の安定性と上り下りの速度を確認します。auひかりは独自回線で混雑しづらく、体感のラグが少ないのでeスポーツ好きの方にも自信を持って勧めています。',
+      tips: [
+        '独自回線で夜間帯も安定して高速',
+        '返金付きキャンペーンで初期費用を抑えられる',
+        'auスマホとのセット割で通信費をトータル最適化'
+      ],
+      providerId: 'au-hikari'
+    },
+    {
+      id: 'solo',
+      title: 'とにかく月額料金を安くしたい一人暮らしの方向け',
+      description:
+        '新人スタッフにも伝えているのですが、一人暮らしのお客さまには「毎月の支出が無理なく続けられるか」が最重要ポイントです。ビッグローブ光はキャンペーン適用で実質負担が抑えられ、サポートも分かりやすいので初めての光回線でも安心です。',
+      tips: [
+        '12ヶ月割引とキャッシュバックで実質月額が低い',
+        'Wi-Fiルーター無料レンタルで初期投資が不要',
+        'サポート窓口が初心者にも丁寧で安心'
+      ],
+      providerId: 'biglobe-hikari'
+    },
+    {
+      id: 'family',
+      title: '家族みんなで使っても速度が落ちないものを選びたい方向け',
+      description:
+        'ショップでは家族構成やスマホキャリアを伺って提案します。ドコモ光なら家族のスマホ代をまとめて割引でき、Wi-Fiを複数台同時利用しても安定していると評判です。リモートワークやお子さまの動画視聴が重なっても安心ですよ。',
+      tips: [
+        '家族のドコモスマホとセットでひと月あたり最大1,100円割引',
+        '訪問設定サポートで初期設定がスムーズ',
+        'dポイント還元で家計管理もしやすい'
+      ],
+      providerId: 'docomo-hikari'
+    }
+  ];
+
   // ページビューの追跡
   usePageView('シンプル光回線比較 - 最安値のインターネット回線を比較');
 
@@ -52,6 +91,22 @@ function App() {
       logEvent(analytics, 'sort_providers', {
         sort_type: type,
         provider_count: sorted.length
+      });
+    }
+  };
+
+  const handlePersonaAffiliateClick = (providerId: string, personaId: string) => {
+    if (analytics) {
+      logEvent(analytics, 'persona_affiliate_click', {
+        provider_id: providerId,
+        persona_id: personaId
+      });
+    }
+
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'persona_affiliate_click', {
+        event_category: 'engagement',
+        event_label: `${providerId}_${personaId}`
       });
     }
   };
@@ -197,6 +252,50 @@ function App() {
                   ranking={sortType !== 'default' ? index + 1 : undefined}
                 />
               ))}
+            </div>
+          </section>
+
+          <section className="persona-section" aria-labelledby="persona-heading">
+            <div className="section-header">
+              <h2 id="persona-heading">目的別おすすめ光回線</h2>
+              <p className="section-subtitle">ショップ店長の視点から、よくあるご相談別に最適なプランを厳選しました。</p>
+            </div>
+            <div className="persona-grid">
+              {personaRecommendations.map((persona) => {
+                const recommendedProvider = providers.find((item) => item.id === persona.providerId);
+                if (!recommendedProvider) return null;
+                const hasAffiliateLink = Boolean(recommendedProvider.affiliateUrl);
+
+                return (
+                  <article key={persona.id} className="persona-card">
+                    <h3>{persona.title}</h3>
+                    <p>{persona.description}</p>
+                    <ul>
+                      {persona.tips.map((tip, index) => (
+                        <li key={index}>{tip}</li>
+                      ))}
+                    </ul>
+                    <div className="persona-actions">
+                      <a className="persona-link" href={`#${recommendedProvider.id}`}>
+                        {recommendedProvider.name}の詳細を見る
+                      </a>
+                      {hasAffiliateLink && (
+                        <a
+                          href={recommendedProvider.affiliateUrl}
+                          className="affiliate-button persona-button"
+                          target="_blank"
+                          rel="nofollow noopener noreferrer"
+                          data-offer={recommendedProvider.id}
+                          data-location={`persona-${persona.id}`}
+                          onClick={() => handlePersonaAffiliateClick(recommendedProvider.id, persona.id)}
+                        >
+                          {recommendedProvider.ctaLabel ?? '限定キャンペーンで申し込む'}
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
 

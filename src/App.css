@@ -208,6 +208,82 @@
   max-width: 100%;
 }
 
+.persona-section {
+  margin: 4rem 0;
+}
+
+.section-subtitle {
+  margin: 0;
+  color: #4b5563;
+  font-size: 1rem;
+  max-width: 720px;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.persona-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.persona-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.persona-card p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.persona-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.persona-card li::marker {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.persona-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.persona-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.persona-link:hover {
+  text-decoration: underline;
+}
+
+.persona-button {
+  justify-content: center;
+}
+
 /* フッター */
 .footer {
   background: #1f2937;
@@ -418,6 +494,10 @@
   
   .section-header h2 {
     font-size: 1.5rem;
+  }
+  
+  .persona-grid {
+    grid-template-columns: 1fr;
   }
   
   .ranking-badge {

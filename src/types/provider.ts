@@ -9,9 +9,12 @@ export interface Provider {
   maxCashback: string; // 最大還元額
   availableAreas: string[];
   features: string[];
-  affiliateUrl: string;
+  affiliateUrl?: string;
   rating: number;
   description: string;
+  effectiveMonthly: string; // 実質月額料金
+  recommendedFor: string; // ターゲットユーザー
+  ctaLabel?: string;
 }
 
 // 比較フィルター用の型

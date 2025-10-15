@@ -18,8 +18,11 @@ export const providers: Provider[] = [
       '24時間サポート'
     ],
     affiliateUrl: 'https://example.com/docomo-affiliate',
-    rating: 4.2,
-    description: 'NTTドコモが提供する光回線サービス。ドコモユーザーならスマホとのセット割でお得に利用可能。'
+    rating: 4.3,
+    description: 'NTTドコモが提供する光回線サービス。ドコモユーザーならスマホとのセット割でお得に利用可能。',
+    effectiveMonthly: '4,730円（ドコモスマホセット割適用時）',
+    recommendedFor: 'ドコモスマホを家族で使っていて、通信とスマホ代をまとめて節約したいご家庭に最適です。',
+    ctaLabel: 'ドコモ光の限定特典を確認する'
   },
   {
     id: 'au-hikari',
@@ -37,8 +40,11 @@ export const providers: Provider[] = [
       'Wi-Fiルーター無料'
     ],
     affiliateUrl: 'https://example.com/au-affiliate',
-    rating: 4.5,
-    description: 'KDDI独自の光回線で安定した高速通信を提供。auユーザーには特にお得な割引プランあり。'
+    rating: 4.6,
+    description: 'KDDI独自の光回線で安定した高速通信を提供。auユーザーには特にお得な割引プランあり。',
+    effectiveMonthly: '4,180円（ずっとギガ得プラン・キャンペーン適用時）',
+    recommendedFor: 'FPSやMMORPGなどオンラインゲームのラグを避けたい、速度重視の方におすすめです。',
+    ctaLabel: 'auひかりの高速回線を申し込む'
   },
   {
     id: 'softbank-hikari',
@@ -56,8 +62,11 @@ export const providers: Provider[] = [
       'おうち割光セット'
     ],
     affiliateUrl: 'https://example.com/softbank-affiliate',
-    rating: 4.0,
-    description: 'SoftBankが提供する光回線サービス。SoftBankユーザーには「おうち割」でお得。'
+    rating: 4.1,
+    description: 'SoftBankが提供する光回線サービス。SoftBankユーザーには「おうち割」でお得。',
+    effectiveMonthly: '4,180円（おうち割光セット適用時）',
+    recommendedFor: 'SoftBankスマホを使っていて、乗り換えキャッシュバックで初期費用を抑えたい方に向いています。',
+    ctaLabel: 'SoftBank光のキャンペーンを確認する'
   },
   {
     id: 'biglobe-hikari',
@@ -75,8 +84,11 @@ export const providers: Provider[] = [
       'セキュリティセット・プレミアム'
     ],
     affiliateUrl: 'https://example.com/biglobe-affiliate',
-    rating: 4.1,
-    description: 'KDDIグループのビッグローブが提供する光回線。au・UQモバイルユーザーには割引あり。'
+    rating: 4.2,
+    description: 'KDDIグループのビッグローブが提供する光回線。au・UQモバイルユーザーには割引あり。',
+    effectiveMonthly: '2,970円（12ヶ月割引・キャッシュバック適用時）',
+    recommendedFor: '一人暮らしでコスパをとことん重視したい方へ。初期費用を抑えつつ安定回線を確保できます。',
+    ctaLabel: 'ビッグローブ光の割引をチェックする'
   },
   {
     id: 'commufa-hikari',
@@ -94,8 +106,11 @@ export const providers: Provider[] = [
       '地域密着サポート'
     ],
     affiliateUrl: 'https://example.com/commufa-affiliate',
-    rating: 4.2,
-    description: '中部地方限定の光回線サービス。独自回線による安定した高速通信とau・UQモバイル割引が魅力。'
+    rating: 4.3,
+    description: '中部地方限定の光回線サービス。独自回線による安定した高速通信とau・UQモバイル割引が魅力。',
+    effectiveMonthly: '3,980円（中部エリア限定キャンペーン適用時）',
+    recommendedFor: '愛知・岐阜など東海エリアで家族みんなが同時に使っても快適な回線を探している方に。',
+    ctaLabel: 'コミュファ光の地域限定割引を見る'
   },
   {
     id: 'ahamo-hikari',
@@ -113,8 +128,11 @@ export const providers: Provider[] = [
       'IPv6対応'
     ],
     affiliateUrl: 'https://example.com/ahamo-affiliate',
-    rating: 4.0,
-    description: 'NTTドコモのahamoユーザー向け光回線サービス。シンプルな料金設定とdポイント還元が魅力。'
+    rating: 4.1,
+    description: 'NTTドコモのahamoユーザー向け光回線サービス。シンプルな料金設定とdポイント還元が魅力。',
+    effectiveMonthly: '3,630円（ahamoセット割適用時）',
+    recommendedFor: 'スマホもネットもシンプルにまとめたい単身世帯にぴったり。dポイント還元で実質負担が軽くなります。',
+    ctaLabel: 'ahamo光のシンプルプランを見る'
   },
   {
     id: 'nifty-hikari',
@@ -132,8 +150,11 @@ export const providers: Provider[] = [
       '無線LANルーター最大25ヶ月無料'
     ],
     affiliateUrl: 'https://example.com/nifty-affiliate',
-    rating: 4.0,
-    description: 'ニフティが提供する光回線サービス。老舗プロバイダーの信頼性とau・UQモバイル割引が特徴。'
+    rating: 4.1,
+    description: 'ニフティが提供する光回線サービス。老舗プロバイダーの信頼性とau・UQモバイル割引が特徴。',
+    effectiveMonthly: '3,608円（キャッシュバック適用時）',
+    recommendedFor: '老舗プロバイダーの安心感を重視しながら、au・UQモバイル割で通信費を抑えたい方に。',
+    ctaLabel: '@nifty光のキャンペーンで申し込む'
   },
   {
     id: 'flets-hikari',
@@ -151,8 +172,11 @@ export const providers: Provider[] = [
       '豊富なオプションサービス'
     ],
     affiliateUrl: 'https://example.com/flets-affiliate',
-    rating: 3.9,
-    description: 'NTT東日本・西日本が提供する光回線の基幹サービス。プロバイダーを自由に選択できる柔軟性が特徴。'
+    rating: 4.0,
+    description: 'NTT東日本・西日本が提供する光回線の基幹サービス。プロバイダーを自由に選択できる柔軟性が特徴。',
+    effectiveMonthly: '5,280円（プロバイダー料込みの目安）',
+    recommendedFor: '細かなオプションやプロバイダーを自分で選びたいこだわり派・法人利用にも対応します。',
+    ctaLabel: 'フレッツ光の詳細を確認する'
   },
   {
     id: 'bizmo-hikari',
@@ -170,7 +194,10 @@ export const providers: Provider[] = [
       'フレッツ光回線使用'
     ],
     affiliateUrl: 'https://example.com/bizmo-affiliate',
-    rating: 4.1,
-    description: '法人・SOHO向けに特化した光回線サービス。固定IPアドレスの提供と充実したサポート体制が特徴。'
+    rating: 4.2,
+    description: '法人・SOHO向けに特化した光回線サービス。固定IPアドレスの提供と充実したサポート体制が特徴。',
+    effectiveMonthly: '4,620円（固定IP1個付きプラン）',
+    recommendedFor: '固定IPや法人向けサポートが必要なSOHO・スモールビジネスに最適なプランです。',
+    ctaLabel: 'ビジモ光で固定IPを申し込む'
   }
 ];
