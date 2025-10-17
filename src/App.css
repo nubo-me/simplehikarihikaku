@@ -299,6 +299,25 @@
   margin-top: 0.5rem;
 }
 
+.footer-links {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #bfdbfe;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  text-decoration: underline;
+}
+
 /* ソートコントロール */
 .section-header {
   margin-bottom: 2rem;

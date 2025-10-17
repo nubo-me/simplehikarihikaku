@@ -351,6 +351,22 @@ function App() {
             ※ 料金・サービス内容は各プロバイダーの公式サイトでご確認ください<br />
             ※ 当サイトはアフィリエイト広告を利用しています
           </p>
+          <nav className="footer-links" aria-label="関連比較サイト">
+            <a
+              href="https://mobilewifihikaku.web.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              モバイルWi-Fi比較サイト
+            </a>
+            <a
+              href="https://kakuyasusimhikaku-6c501.web.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              格安SIM比較サイト
+            </a>
+          </nav>
         </div>
       </footer>
       
