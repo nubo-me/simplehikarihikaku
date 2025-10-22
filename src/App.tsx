@@ -158,8 +158,8 @@ function App() {
         <div className="hero-background">
           <div className="hero-image">
             <img 
-              src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
-              alt="光ファイバーケーブルの美しい光 - 高速インターネット接続" 
+              src="/Gemini_Generated_Image_h50x8mh50x8mh50x.png" 
+              alt="ゲーミングPCで高速インターネットを楽しむユーザー" 
               className="hero-bg-image" 
               loading="eager"
               fetchPriority="high"
