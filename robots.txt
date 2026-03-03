@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://simple-hikari.web.app/sitemap.xml
-
-# クロール速度の制限
-Crawl-delay: 1
-
-# Google特有の設定
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
+Sitemap: https://hikari.operationnekonomics.com/sitemap.xml
